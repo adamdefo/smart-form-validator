@@ -33,7 +33,7 @@ gulp.task('fonts', function() {
 
 gulp.task('js', function() {
     gulp.src(['!./assets/js/vendor/vue/*.js', './assets/js/vendor/*.js', './assets/js/*.js'])
-        .pipe(concat('main.js'))
+        .pipe(concat('app.js'))
         .pipe(gulp.dest('./dev/js'))
         .pipe(browserSync.reload({stream:true}));
 });
@@ -74,7 +74,7 @@ gulp.task('build', function() {
         .pipe(jade())
         .pipe(gulp.dest('./build/'));
 
-    gulp.src('./dev/js/main.js')
+    gulp.src('./dev/js/spp.js')
         .pipe(uglify())
         .pipe(gulp.dest('./build/js/'));
 
