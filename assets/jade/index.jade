@@ -5,14 +5,14 @@ html
 	body
 		main.main
 			section.section
-				form.form.form-validate(type="POST")
+				form#form-feedback.form.form-validate(type="POST")
 					.form__group
 						.form__item
 							label.form__label._required Имя
-							input.form__el.form__input(type="text" name="first-name" _required data-type="text")
+							input.form__el.form__input(type="text" name="first_name" _required data-type="text")
 						.form__item
 							label.form__label Фамилия
-							input.form__el.form__input(type="text" name="last-name" data-type="text")
+							input.form__el.form__input(type="text" name="last_name" data-type="text")
 					.form__group
 						.form__item
 							label.form__label._required Телефон
