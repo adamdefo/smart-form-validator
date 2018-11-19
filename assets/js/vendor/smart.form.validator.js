@@ -2,7 +2,7 @@
  * Валидатор форм
  * @author Adam Defo
  */
-(function() {
+(function(window) {
 
 	'use strict';
 
@@ -23,8 +23,14 @@
 		this.$el = document.querySelector(selector);
 
 		// инпуты, селекты, чекбоксы, радиобатоны
-		this.$formElements = this.$el.querySelectorAll('.form__el');
+		this.$formElements = [].slice.call(this.$el.querySelectorAll('.form__el'));
 		this.formElements = [];
+
+		this.$submitBtn = this.$el.querySelector('.js-submit');
+
+		this.requiredElements = [];
+
+		this.errors = 0;
 
 		this._init();
 	};
@@ -32,29 +38,85 @@
 	SmartFormValidator.prototype._params = {};
 
 	SmartFormValidator.prototype._init = function () {
+		this.$submitBtn.disabled = true;
 		this._initFormElements();
 	};
 
 	// создаст для каждого элемента формы свой объект
 	SmartFormValidator.prototype._initFormElements = function () {
 		var self = this;
-		this.$formElements.forEach(function (el, index) {
+		this.$formElements.forEach(function (el, id) {
 			self.formElements.push({
-				id: index,
+				id,
+				$el: el,
+				name: el.name,
+				type: el.getAttribute('data-type'),
+				required: el.hasAttribute('_required'),
+				rule: null,
+				error: null
 			});
+			self._addEvent(el);
+		});
+		this._validate();
+	};
+
+	SmartFormValidator.prototype._addEvent = function (el) {
+		var self = this;
+		el.addEventListener('change', function () {
+			self._validate();
 		});
 	};
 
-	SmartFormValidator.prototype._initCtrls = function () {
-	};
-
-	SmartFormValidator.prototype._initEvents = function () {
-	};
-
 	SmartFormValidator.prototype._validate = function () {
+		var self = this;
+		this.errors = 0;
+
+		this.formElements.filter(function (el) {
+			return el.required; 
+		}).forEach(function(el) {
+			if (!self._validateElement(el)) {
+				el.error = true;
+				self.errors++;
+			} else {
+				el.error = false;
+			}
+		});
+
+		this._outErrors();
 	};
 
-	SmartFormValidator.prototype._outError = function () {
+	SmartFormValidator.prototype._validateElement = function (el) {
+		switch (el.type) {
+			case 'email':
+				return (function(email) {
+					var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+						return reg.test(email);
+				})(el.$el.value);
+			default:
+				return (function(value) {
+					var error = 0
+					if (!value) {
+						error++;
+					}
+					return !error;
+				})(el.$el.value);
+		}
 	};
 
-})();
+	SmartFormValidator.prototype._outErrors = function () {
+		this.formElements.forEach(function(el) {
+			if (el.error) {
+				classie.add(el.$el, '_error');
+				// console.log(this.name, this.previousElementSibling)
+			} else {
+				classie.remove(el.$el, '_error');
+				// console.log(this.name, this.previousElementSibling)
+			}
+		});
+
+		this.$submitBtn.disabled = this.errors > 0;
+	};
+
+	window.SmartFormValidator = SmartFormValidator;
+
+})(window);

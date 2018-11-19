@@ -1,13 +1,31 @@
 html
-    head
-        title Form Validator
-        link(rel="stylesheet", href="css/styles.css")
-    body
-        main.main
-            section.section
-                form.form.form-validate
-                    .form__group
-                        .form__item
-                            label.form__label
-                            input.form__input
-        script(src="js/app.js")
+	head
+		title Form Validator
+		link(rel="stylesheet", href="css/styles.css")
+	body
+		main.main
+			section.section
+				form.form.form-validate(type="POST")
+					.form__group
+						.form__item
+							label.form__label._required Имя
+							input.form__el.form__input(type="text" name="first-name" _required data-type="text")
+						.form__item
+							label.form__label Фамилия
+							input.form__el.form__input(type="text" name="last-name" data-type="text")
+					.form__group
+						.form__item
+							label.form__label._required Телефон
+							input.form__el.form__input(type="text" name="phone" _required data-type="text")
+					.form__group
+						.form__item
+								label.form__label._required Электропочта
+								input.form__el.form__input(type="text" name="email" _required data-type="email")
+					.form__group
+						.form__item
+								label.form__label Сообщение
+								textarea.form__el.form__textarea(name="msg" data-type="text")
+					.form__group
+						.form__item
+								button.btn.js-submit(type="submit") Отправить
+		script(src="js/app.js")

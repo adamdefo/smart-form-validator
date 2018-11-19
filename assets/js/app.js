@@ -1,1 +1,1 @@
-console.log('Hello')
+var smartFormValidator = new SmartFormValidator('.form-validate');

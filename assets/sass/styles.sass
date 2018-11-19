@@ -1,15 +1,63 @@
-form
-    margin: 0
-    padding: 0
+html
+	font-size: 10px
 
-input
-    outline: none
+html, body
+	margin: 0
+	padding: 0
+
+body
+	font: 15px/1.5 'Arial', sans-serif
+
+form
+	margin: 0
+	padding: 0
+
+input, textarea
+	outline: none
 
 .form
-    margin: 0 auto
-    width: 500px
-    &__group
-    &__item
-    &__label
-    &__input
-    
+	margin: 0 auto
+	width: 400px
+	&__group
+		margin: 0 -15px
+	&__item
+		display: inline-block
+		margin-bottom: 10px
+		padding: 0 15px
+	&__label
+		display: block
+		color: #000000
+		font-size: 1.5rem
+		font-weight: bold
+		margin-bottom: 5px
+		-webkit-transition: all .1s
+		transition: all .1s
+	&__input
+		position: relative
+		background-color: #f0f0f0
+		border: 1px solid #f0f0f0
+		border-radius: 2px
+		color: #232323
+		font-size: 1.35rem
+		letter-spacing: 0.01rem
+		height: 42px
+		line-height: 42px
+		padding: 0 10px
+		width: 100%
+		z-index: 2
+		-webkit-transition: all .1s
+		transition: all .1s
+	&__textarea
+		background-color: #f0f0f0
+		border: 0
+		border-radius: 2px
+		font-size: 1.35rem
+		letter-spacing: 0.01rem
+		min-height: 100px
+		padding: 10px
+		resize: vertical
+		width: 100%
+
+._error
+	border-color: #cc0000
+	color: #cc0000 
