@@ -121,6 +121,7 @@
 			el.value = '';
 			classie.remove(el, '_error');
 		});
+		this.$submitBtn.disabled = true;
 	};
 
 	window.SmartFormValidator = SmartFormValidator;
