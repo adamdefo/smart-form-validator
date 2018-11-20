@@ -1,4 +1,4 @@
-var makeRequest = function (method, url, data) {
+var createHttpRequest = function (method, url, data) {
 	return new Promise(function (resolve, reject) {
 		var xhr = new XMLHttpRequest();
 		xhr.open(method, url);
@@ -25,12 +25,12 @@ var makeRequest = function (method, url, data) {
 };
 
 // получает значение инпутов в форме
-var getFormValues = function(formID) {
-	var form = document.getElementById(formID);
+var getFormValues = function (formID) {
+	var $form = document.getElementById(formID);
 	var data = {
 		statusText: ''
 	};
-	[].slice.call(form.querySelectorAll('.form__input')).forEach(function(input) {
+	[].slice.call($form.querySelectorAll('.form__input, .form__textarea')).forEach(function(input) {
 		data[input.getAttribute('name')] = input.value;
 	});
 	
