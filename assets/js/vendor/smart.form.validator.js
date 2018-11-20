@@ -57,7 +57,6 @@
 			});
 			self._addEvent(el);
 		});
-		this._validate();
 	};
 
 	SmartFormValidator.prototype._addEvent = function (el) {
@@ -115,6 +114,13 @@
 		});
 
 		this.$submitBtn.disabled = this.errors > 0;
+	};
+
+	SmartFormValidator.prototype.resetForm = function () {
+		this.$formElements.forEach(function(el) {
+			el.value = '';
+			classie.remove(el, '_error');
+		});
 	};
 
 	window.SmartFormValidator = SmartFormValidator;
