@@ -1,0 +1,163 @@
+$count-col: 12; // количество колонок
+
+$pd-right: 15px;
+$pd-right-xs: 15px;
+
+$pd-left: 15px;
+$pd-left-xs: 15px;
+
+$row-margin: -15px;
+$row-margin-xs: -15px;
+
+$breakpoints: (
+	xl: (
+		container: (
+			max-width: 1170px
+		)
+	),
+	xs: (
+		container: (
+			max-width: 100%
+		)
+	)
+);
+
+// вернет нужную мапу по брекпонту
+@function getBreakpointMap ($breakpointList, $breakpoint) {
+	@return map-get($breakpointList, $breakpoint);
+}
+
+// вернет значение у свойства у элемента (любой класс, который записан в мапе)
+@function getPropValue ($breakpoint, $element, $prop) {
+	$breakpointMap: getBreakpointMap($breakpoints, $breakpoint);
+	@return map-get(map-get($breakpointMap, $element), $prop);
+}
+
+.container {
+	position: relative;
+	margin: 0 auto;
+	padding-left: $pd-left-xs;
+	padding-right: $pd-right-xs;
+	width: 100%;
+	max-width: getPropValue(xs, container, max-width);
+	@media (min-width: 992px) {
+		padding-left: $pd-left;
+		padding-right: $pd-right;
+		max-width: getPropValue(xl, container, max-width);
+	}
+}
+
+.row {
+	margin: 0 $row-margin-xs;
+	@media (min-width: 992px) {
+		margin: 0 $row-margin;
+	}
+}
+
+.col {
+	position: relative;
+	float: left;
+	min-height: 1px;
+	padding-left: $pd-left-xs;
+	padding-right: $pd-right-xs;
+	width: 100%;
+	@media (min-width: 992px) {
+		padding-left: $pd-left;
+		padding-right: $pd-right;
+	}
+	@for $i from 1 through $count-col {
+		&-#{$i} {
+			width: 100%/($count-col/$i);
+		}
+	}
+	@for $i from 1 through $count-col {
+		&-md-#{$i} {
+			@media (max-width: 991px) {
+				width: 100%/($count-col/$i);
+			}
+		}
+	}
+	@for $i from 1 through $count-col {
+		&-sm-#{$i} {
+			@media (max-width: 767px) {
+				width: 100%/($count-col/$i);
+			}
+		}
+	}
+	@for $i from 1 through $count-col {
+		&-xs-#{$i} {
+			@media (max-width: 575px) {
+				width: 100%/($count-col/$i);
+			}
+		}
+	}
+	&-hidden {
+		&-md {
+			@media (max-width: 991px) {
+				display: none !important;
+			}
+		}
+		&-sm {
+			@media (max-width: 767px) {
+				display: none !important;
+			}
+		}
+		&-xs {
+			@media (max-width: 575px) {
+				display: none !important;
+			}
+		}
+	}
+}
+
+.offset {
+	position: relative;
+	&-unshift { // отступ слева
+		@for $i from 1 through ($count-col - 1) {
+			&-#{$i} {
+				@media (min-width: 992px) {
+					left: 100%/($count-col/$i);
+				}
+			}
+		}
+	}
+	&-push {
+		@for $i from 1 through ($count-col - 1) {
+			&-#{$i} { // отступ справа
+				@media (min-width: 992px) {
+					right: 100%/($count-col/$i);
+				}
+			}
+		}
+	}
+}
+
+.container, .clr, .row {
+	&:before, &:after {
+		content: '';
+		clear: both;
+		display: block;
+		line-height: 0;
+	}
+}
+
+.txt {
+	&-center {
+		text-align: center;
+	}
+	&-left {
+		text-align: left;
+	}
+	&-right {
+		text-align: right;
+	}
+}
+
+.mb {
+	&-15 {
+		margin-bottom: 15px;
+	}
+	&-30 {
+		margin-bottom: 30px;
+	}
+}

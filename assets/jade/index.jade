@@ -1,31 +1,28 @@
 html
 	head
-		title Form Validator
+		title Smart Form Validator
 		link(rel="stylesheet", href="css/styles.css")
 	body
 		main.main
 			section.section
-				form#form-feedback.form.form-validate()
-					.form__group
-						.form__item
-							label.form__label._required Имя
-							input.form__el.form__input(type="text" name="first_name" _required data-type="text")
-						.form__item
-							label.form__label Фамилия
-							input.form__el.form__input(type="text" name="last_name" data-type="text")
-					.form__group
-						.form__item
-							label.form__label._required Телефон
-							input.form__el.form__input(type="text" name="phone" _required data-type="text")
-					.form__group
-						.form__item
-								label.form__label._required Электропочта
-								input.form__el.form__input(type="text" name="email" _required data-type="email")
-					.form__group
-						.form__item
-								label.form__label Сообщение
-								textarea.form__el.form__textarea(name="msg" data-type="text")
-					.form__group
-						.form__item
-								button.btn.js-submit(type="submit") Отправить
+				.container
+					form.form.form-callback.js-modal-form-callback(action="/ajax/callback.php" method="POST")
+						.form__title.txt-center Наш специалист свяжется с Вами в течение 15 минут
+						.form__group
+							.row
+								.col.col-4
+									.form__item
+										input.form-control.form__input._required(autocomplete="off" type="text" name="name" value="" _required data-type="text")
+										label.form__label Имя
+								.col.col-4
+									.form__item
+										input.form-control.form__input._required(type="text" name="phone" value="" _required data-type="phone")
+										label.form__label Телефон
+								.col.col-4
+									.form__item
+										input.form-control.form__input._required(type="text" name="email" value="" _required data-type="email")
+										label.form__label E-mail
+						.form__group.form__group-btn
+							button.btn.js-form-submit(type="submit")
+								span Отправить
 		script(src="js/app.js")

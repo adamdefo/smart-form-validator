@@ -1,0 +1,75 @@
+button
+	outline: none
+	cursor: pointer
+.btn
+	position: relative
+	display: inline-block
+	background-color: $btn_bg
+	border: none
+	border-radius: 4px
+	color: #ffffff
+	font-size: 1.3rem
+	font-weight: 500
+	letter-spacing: .03rem
+	outline: none
+	padding: 18px 32px
+	text-decoration: none
+	white-space: nowrap
+	-webkit-transition: all .15s
+	-moz-transition: all .15s
+	transition: all .15s
+	&:hover
+		background-color: $btn_bg_hover
+	&:before
+		content: ""
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		border-radius: 4px
+		-webkit-box-shadow: 0 2px 4px #06f
+		box-shadow: 0 2px 4px #06f
+		-webkit-transform-origin: 50% 100%
+		-ms-transform-origin: 50% 100%
+		transform-origin: 50% 100%
+		-webkit-transform: translateZ(0)
+		transform: translateZ(0)
+		opacity: .3
+		-webkit-transition: opacity .35s,-webkit-transform .35s
+		transition: opacity .35s,-webkit-transform .35s
+		 -o-transition: transform .35s,opacity .35s
+		 transition: transform .35s,opacity .35s
+		 transition: transform .35s,opacity .35s,-webkit-transform .35s
+	& span
+		position: relative
+		z-index: 2
+	&:disabled
+		background-color: #979797
+		cursor: default
+		&:before
+			box-shadow: none
+
+.btn-play
+	display: inline-block
+	background: none
+	padding: 0
+	border: none
+	cursor: pointer
+	-webkit-transform: translateZ(0)
+	transform: translateZ(0)
+	background: #fff
+	border-radius: 50%
+	width: 76px
+	height: 76px
+	will-change: transform
+	-webkit-transition: background .35s,-webkit-transform .35s
+	-o-transition: background .35s,transform .35s
+	transition: background .35s,transform .35s
+	& svg
+		width: 100%
+		height: 100%
+		fill: $link_color
+		webkit-transition: fill .35s
+		-o-transition: fill .35s
+		transition: fill .35s
