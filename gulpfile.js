@@ -18,8 +18,7 @@ gulp.task('jade', function() {
 });
 
 gulp.task('sass', function() {
-    // gulp.src(['./assets/sass/*.sass', '!./assets/sass/_*.sass'])
-    gulp.src(['./assets/sass/*.sass'])
+    gulp.src(['./assets/sass/*.sass', './assets/sass/*.scss'])
     .pipe(sass())
     .pipe(myth())
     .pipe(gulp.dest('./dev/css/'))
@@ -32,8 +31,8 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('js', function() {
-    gulp.src(['!./assets/js/vendor/vue/*.js', './assets/js/vendor/*.js', './assets/js/*.js'])
-        .pipe(concat('app.js'))
+    gulp.src(['./assets/js/vendor/*.js', './assets/js/main.js'])
+        .pipe(concat('main.bundle.js'))
         .pipe(gulp.dest('./dev/js'))
         .pipe(browserSync.reload({stream:true}));
 });
@@ -54,15 +53,14 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('default', ['browser-sync', 'sass', 'jade', 'js', 'images', 'fonts'], function() {
-    gulp.watch('./assets/sass/**/*.sass', ['sass']);
+    gulp.watch('./assets/sass/*.*', ['sass']);
     gulp.watch('./assets/jade/**/*.jade', ['jade']);
     gulp.watch('./assets/js/**/*', ['js']);
 });
 
 // сборка проекта в продакшн
 gulp.task('build', function() {
-    gulp.src('./dev/css/app.css')
-        //.pipe(sass())
+    gulp.src('./dev/css/styles.css')
         .pipe(myth())
         .pipe(csso())
         .pipe(gulp.dest('./build/css/'));
@@ -74,7 +72,7 @@ gulp.task('build', function() {
         .pipe(jade())
         .pipe(gulp.dest('./build/'));
 
-    gulp.src('./dev/js/spp.js')
+    gulp.src('./dev/js/main.bundle.js')
         .pipe(uglify())
         .pipe(gulp.dest('./build/js/'));
 
