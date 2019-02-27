@@ -10,32 +10,30 @@ html
 		main.main
 			section.section
 				.container
-					form.form.form-callback.js-modal-form-callback(action="/ajax/callback.php" method="POST")
-						.form__title.txt-center Наш специалист свяжется с Вами в течение 15 минут
+					form.form.form-callback.js-modal-form-callback(action="" method="POST")
 						.form__group
 							.row
 								.col.col-4
 									.form__item
-										input.form-control.form__input._required(autocomplete="off" type="text" name="name" value="" _required data-type="text")
+										input.form__control.form__input._required(autocomplete="off" type="text" name="name" _required value="" data-field="name")
 										label.form__label Имя
+										.form__error
 								.col.col-4
 									.form__item
-										input.form-control.form__input._required(type="text" name="phone" value="" _required data-type="phone")
+										input.form__control.form__input._required(type="text" name="phone" _required value="" data-field="phone")
 										label.form__label Телефон
+										.form__error
 								.col.col-4
 									.form__item
-										input.form-control.form__input._required(type="text" name="email" value="" _required data-type="email")
+										input.form__control.form__input._required(type="text" name="email" _required value="" data-field="email")
 										label.form__label E-mail
+										.form__error
 						.form__group
 							.row
 								.col.col-6
 									.form__item.form__item-checkbox
-										input#is_agree.form-control._required(type="checkbox" name="is_agree" value="" _required data-type="checkbox")
+										input#is_agree.form__control._required(type="checkbox" name="is_agree" value="" data-field="checkbox")
 										label(for="is_agree") я согласен
-								.col.col-6
-									.form__item.form__item-checkbox
-										input#is_agree2.form-control._required(type="checkbox" name="is_agree2" value="" _required data-type="checkbox")
-										label(for="is_agree2") я согласен 2
 						.form__group.form__group-btn
 							button.btn.js-form-submit(type="submit")
 								span Отправить

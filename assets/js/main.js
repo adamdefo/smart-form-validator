@@ -1,1 +1,0 @@
-var callbackForm = new SmartFormValidator('.js-modal-form-callback');

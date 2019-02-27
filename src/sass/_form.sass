@@ -1,3 +1,10 @@
+form
+	margin: 0
+	padding: 0
+
+input, textarea
+	outline: none
+
 .form
 	position: relative
 	width: 100%
@@ -60,6 +67,9 @@
 			border: 0
 			&:after
 				width: 0
+	&__error
+		color: $error_color
+		font-size: 1.2rem
 	&__label
 		position: absolute
 		left: 0

@@ -21,7 +21,7 @@ button
 	&:hover
 		background-color: $btn_bg_hover
 	&:before
-		content: ""
+		content: ''
 		position: absolute
 		left: 0
 		top: 0
@@ -49,27 +49,3 @@ button
 		cursor: default
 		&:before
 			box-shadow: none
-
-.btn-play
-	display: inline-block
-	background: none
-	padding: 0
-	border: none
-	cursor: pointer
-	-webkit-transform: translateZ(0)
-	transform: translateZ(0)
-	background: #fff
-	border-radius: 50%
-	width: 76px
-	height: 76px
-	will-change: transform
-	-webkit-transition: background .35s,-webkit-transform .35s
-	-o-transition: background .35s,transform .35s
-	transition: background .35s,transform .35s
-	& svg
-		width: 100%
-		height: 100%
-		fill: $link_color
-		webkit-transition: fill .35s
-		-o-transition: fill .35s
-		transition: fill .35s
