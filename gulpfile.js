@@ -12,7 +12,7 @@ gulp.task('jade', function() {
         .pipe(jade({
             pretty: true
         })).on('error', console.log)
-        .pipe(gulp.dest('./dev/'))
+        .pipe(gulp.dest('./demo/'))
         .pipe(browserSync.reload({stream:true}));
 });
 
@@ -20,21 +20,21 @@ gulp.task('sass', function() {
     gulp.src(['./src/sass/*.sass', './src/sass/*.scss'])
     .pipe(sass())
     .pipe(myth())
-    .pipe(gulp.dest('./dev/css/'))
+    .pipe(gulp.dest('./demo/css/'))
     .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('js', function() {
     gulp.src(['./src/js/vendor/*.js', './src/js/main.js'])
         .pipe(concat('main.bundle.js'))
-        .pipe(gulp.dest('./dev/js'))
+        .pipe(gulp.dest('./demo/js'))
         .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
-            baseDir: 'dev'
+            baseDir: 'demo'
         },
         notify: false
     });
