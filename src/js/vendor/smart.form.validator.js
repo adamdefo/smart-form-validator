@@ -112,7 +112,8 @@
 					errorText: null,
 					changed: false, // прим. при валидации, чтобы не проставлять ошибку у других элементов, значение которых не менялось)
 					active: false, // инпут в фокусе или имеет значение
-					valid: false
+					valid: false,
+					timer: null, // таймер для валидации, который запускается если в инпут ввели что-то, и после его заполняют
 				}
 				ths.inputs[el.name] = input
 			}
@@ -157,6 +158,11 @@
 		if (!this.inputs[inputName].changed) {
 			this.inputs[inputName].changed = true;
 		}
+	};
+
+	// создает таймер валидации для инпута
+	SmartFormValidator.prototype._createTimerValidation = function (input) {
+
 	};
 
 	// запускает валидацию инпутов и в случае успешной проверки разблокирует кнопку отправки формы
