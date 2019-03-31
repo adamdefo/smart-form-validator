@@ -25,5 +25,6 @@ var callbackForm = new SmartFormValidator(
                 }
             }
         },
+        disableSubmitBtn: true,
         displayError: true
     });

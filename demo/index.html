@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Smart Form Validator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <main class="main">
+      <section class="section">
+        <div class="container">
+          <form action="" method="POST" class="form form-callback js-modal-form-callback">
+            <div class="form__group">
+              <div class="row">
+                <div class="col col-4">
+                  <div class="form__item">
+                    <input autocomplete="off" type="text" name="name" value="" data-field="name" class="form__control form__input">
+                    <label class="form__label">Имя</label>
+                    <div class="form__error"></div>
+                  </div>
+                </div>
+                <div class="col col-4">
+                  <div class="form__item">
+                    <input type="text" name="phone" _required value="" data-field="phone" class="form__control form__input _required">
+                    <label class="form__label">Телефон</label>
+                    <div class="form__error"></div>
+                  </div>
+                </div>
+                <div class="col col-4">
+                  <div class="form__item">
+                    <input type="text" name="email" _required value="" data-field="email" class="form__control form__input _required">
+                    <label class="form__label">E-mail</label>
+                    <div class="form__error"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form__group">
+              <div class="row">
+                <div class="col col-6">
+                  <div class="form__item form__item-checkbox">
+                    <input id="is_agree" type="checkbox" name="is_agree" value="" _required data-field="checkbox" class="form__control _required">
+                    <label for="is_agree">я согласен</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form__group form__group-btn">
+              <button type="submit" class="btn js-form-submit"><span>Отправить</span></button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="js/main.bundle.js"></script>
+  </body>
+</html>
