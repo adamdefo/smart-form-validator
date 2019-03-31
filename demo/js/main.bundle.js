@@ -442,6 +442,6 @@ var callbackForm = new SmartFormValidator(
                 }
             }
         },
-        disableSubmitBtn: false,
+        disableSubmitBtn: true,
         displayError: true
     });
